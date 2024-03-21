@@ -2,20 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
-    public Transform refPie;
-    
-    public float moveSpeed = 5f; // Velocidad de movimiento del personaje
+    [SerializeField] private Transform refPie;
 
-    public float fuerzaSalto;
-    public bool enPiso;
+    [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
+
+    [SerializeField] private float jumpForce = 150;
+    [SerializeField] private bool onFloor = false;
 
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        refPie = GameObject.Find("Pie").gameObject.transform;
     }
 
     private void Update()
@@ -24,27 +26,29 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    public void Jump()
+    private void Jump()
     {
-        enPiso = Physics2D.OverlapCircle(refPie.position, 1f, 1 << 3);
-        //ani.SetBool("enPiso", enPiso);
-        if (Input.GetKeyDown(KeyCode.Space) && enPiso)
+        onFloor = Physics2D.OverlapCircle(refPie.position, 1f, 1 << 3);
+        if (Input.GetButtonDown("Jump") && onFloor)
         {
             playerRB.AddForce(
-                new Vector2(0, fuerzaSalto),
+                new Vector2(0, jumpForce),
                 ForceMode2D.Impulse);
         }
     }
 
-    public void Move()
+    private void Move()
     {
-        // Obtener la entrada horizontal (izquierda/derecha)
         float moveInput = Input.GetAxis("Horizontal");
 
-        // Calcular la velocidad de movimiento
         float moveVelocity = moveInput * moveSpeed;
 
         // Aplicar la velocidad al Rigidbody2D del personaje
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
+    }
+
+    private void Attack()
+    {
+        
     }
 }
