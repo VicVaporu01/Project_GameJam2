@@ -289,5 +289,5 @@ MonoBehaviour:
   speed: 3
   playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   player: {fileID: 0}
