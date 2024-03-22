@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using Unity.Mathematics;
 
 public class GameManager : MonoBehaviour
 {
 
-    PlayerController player;
+    [SerializeField]PlayerController player;
     TextMeshProUGUI Balas;
+    [SerializeField] Slider vida;
+    int maxVida;
 
     public static GameManager Instance {get; private set;}
 
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+        //maxVida = player.health
     }
 
     // Start is called before the first frame update
@@ -35,7 +40,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //vida.value = math.clamp(vida/5)
     }
     public void cambioDeEscena(string Escena)
     {
