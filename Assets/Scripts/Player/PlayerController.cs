@@ -17,10 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
     [SerializeField] private float jumpForce = 150;
 
-    [Header("SOUNDS")] 
-    [SerializeField] private AudioClip jump;
+    [Header("SOUNDS")] [SerializeField] private AudioClip jump;
     [SerializeField] private float stepInterval = 0.5f;
-    
+
     private float stepTimer;
 
     private bool onFloor = false;
@@ -106,5 +105,25 @@ public class PlayerController : MonoBehaviour
         Vector3 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        /*
+            Variable para pruebas solamente, cuando usen el método tienen
+            que tener un parametro que será una caracteristica del controlador de
+             balas del enemigo con el daño que hace la bala
+        */
+        float enemyBulletDamage = 1.0f;
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            //TakeDamage(other.gameObject.GetComponent<EnemyBulletController>().bulletDamage);
+            TakeDamage(enemyBulletDamage);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }

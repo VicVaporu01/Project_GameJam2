@@ -7,6 +7,7 @@ TagManager:
   - groundCheck
   - Gun
   - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

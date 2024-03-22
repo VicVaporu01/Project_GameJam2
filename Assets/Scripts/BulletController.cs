@@ -10,12 +10,18 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D bulletRB;
 
     private int hitHash;
+    [SerializeField] private float lifeTime = 2.0f;
 
     private void Start()
     {
         bulletAnimator = GetComponent<Animator>();
         hitHash = Animator.StringToHash("hit");
         bulletRB = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(LifeTimeWatcher());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,5 +33,12 @@ public class BulletController : MonoBehaviour
     public void Desactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator LifeTimeWatcher()
+    {
+        yield return new WaitForSeconds(lifeTime);
+
+        Desactivate();
     }
 }
