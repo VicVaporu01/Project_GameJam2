@@ -8,14 +8,15 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
     private Animator playerAnimator;
-    [SerializeField] private Transform refPie;
+    private Transform refPie;
 
+    [SerializeField] private float health = 5.0f;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
-
     [SerializeField] private float jumpForce = 150;
-    [SerializeField] private bool onFloor = false;
+
+    private bool onFloor = false;
     private bool lookAtRight = true;
-    private int velocityHash, YVelocityHash,onFloorHash;
+    private int velocityHash, YVelocityHash, onFloorHash;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        
+
         // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
     }
