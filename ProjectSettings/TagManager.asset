@@ -4,15 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - groundCheck
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - groundLayer
+  - Player
   - Water
   - UI
-  - 
+  - groundLayer
   - 
   - 
   - 
