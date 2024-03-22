@@ -9,10 +9,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRB;
     private Animator playerAnimator;
     private Transform refPie;
+    private AudioSource playerAS;
 
-    [SerializeField] private float health = 5.0f;
+    [Header("PLAYER STATS")] 
+    public float health = 5.0f;
+
+    private float moveInput;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
     [SerializeField] private float jumpForce = 150;
+
+    [Header("SOUNDS")] 
+    [SerializeField] private AudioClip stepInRockClip;
+    [SerializeField] private AudioClip jump;
+
 
     private bool onFloor = false;
     private bool lookAtRight = true;
@@ -20,8 +29,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         playerRB = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerAS = GetComponent<AudioSource>();
         refPie = GameObject.Find("Pie").gameObject.transform;
 
         velocityHash = Animator.StringToHash("Velocity");
@@ -47,12 +58,13 @@ public class PlayerController : MonoBehaviour
             playerRB.AddForce(
                 new Vector2(0, jumpForce),
                 ForceMode2D.Impulse);
+            playerAS.PlayOneShot(jump);
         }
     }
 
     private void Move()
     {
-        float moveInput = Input.GetAxis("Horizontal");
+        moveInput = Input.GetAxis("Horizontal");
 
         if (moveInput > 0 && !lookAtRight)
         {
@@ -69,6 +81,14 @@ public class PlayerController : MonoBehaviour
 
         // Aplicar la velocidad al Rigidbody2D del personaje
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetButton("Horizontal"))
+        {
+            playerAS.PlayOneShot(stepInRockClip);
+        }
     }
 
     // Change the direction the player is facing
