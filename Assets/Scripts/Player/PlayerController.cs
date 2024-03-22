@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         
+        // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
     }
 
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
     }
 
+    // Change the direction the player is facing
     private void Turn()
     {
         lookAtRight = !lookAtRight;
