@@ -11,17 +11,17 @@ public class PlayerController : MonoBehaviour
     private Transform refPie;
     private AudioSource playerAS;
 
-    [Header("PLAYER STATS")] 
-    public float health = 5.0f;
+    [Header("PLAYER STATS")] public float health = 5.0f;
 
     private float moveInput;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
     [SerializeField] private float jumpForce = 150;
 
     [Header("SOUNDS")] 
-    [SerializeField] private AudioClip stepInRockClip;
     [SerializeField] private AudioClip jump;
-
+    [SerializeField] private float stepInterval = 0.5f;
+    
+    private float stepTimer;
 
     private bool onFloor = false;
     private bool lookAtRight = true;
@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
 
         // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
+
+        // Actualiza el temporizador de los pasos
+        if (stepTimer > 0)
+        {
+            stepTimer -= Time.deltaTime;
+        }
     }
 
     private void Jump()
@@ -80,13 +86,16 @@ public class PlayerController : MonoBehaviour
 
         // Aplicar la velocidad al Rigidbody2D del personaje
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
-    }
 
-    private void LateUpdate()
-    {
-        if (Input.GetButton("Horizontal"))
+        if (onFloor && moveInput != 0 && stepTimer <= 0)
         {
-            playerAS.PlayOneShot(stepInRockClip);
+            playerAS.Play();
+            stepTimer = stepInterval; // Reinicia el temporizador de los pasos
+        }
+
+        if (stepTimer <= 0)
+        {
+            playerAS.Pause();
         }
     }
 
@@ -97,9 +106,5 @@ public class PlayerController : MonoBehaviour
         Vector3 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
-    }
-
-    private void Attack()
-    {
     }
 }
