@@ -6,6 +6,9 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     private Animator playerAnimator;
+    private AudioSource gunAS;
+
+    [SerializeField] private AudioClip laserSound;
 
     private int isWeaponRaisedHash;
     public float bulletSpeed = 25.0f;
@@ -14,6 +17,7 @@ public class Shoot : MonoBehaviour
     private void Start()
     {
         playerAnimator = GetComponentInParent<Animator>();
+        gunAS = GetComponent<AudioSource>();
         isWeaponRaisedHash = Animator.StringToHash("isWeaponRaised");
     }
 
@@ -34,6 +38,8 @@ public class Shoot : MonoBehaviour
         GameObject bullet = BulletPool.Instance.RequestBullet();
         bullet.transform.position = bulletStartPosition;
         bullet.transform.rotation = transform.rotation;
+
+        gunAS.PlayOneShot(laserSound);
 
         playerAnimator.SetBool(isWeaponRaisedHash, true);
 
