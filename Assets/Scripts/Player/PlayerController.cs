@@ -8,19 +8,30 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
     private Animator playerAnimator;
-    [SerializeField] private Transform refPie;
+    private Transform refPie;
+    private AudioSource playerAS;
 
+    [Header("PLAYER STATS")] public float health = 5.0f;
+
+    private float moveInput;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
-
     [SerializeField] private float jumpForce = 150;
-    [SerializeField] private bool onFloor = false;
+
+    [Header("SOUNDS")] [SerializeField] private AudioClip jump;
+    [SerializeField] private float stepInterval = 0.5f;
+
+    private float stepTimer;
+
+    private bool onFloor = false;
     private bool lookAtRight = true;
-    private int velocityHash, YVelocityHash,onFloorHash;
+    private int velocityHash, YVelocityHash, onFloorHash;
 
     private void Start()
     {
+        Time.timeScale = 1;
         playerRB = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerAS = GetComponent<AudioSource>();
         refPie = GameObject.Find("Pie").gameObject.transform;
 
         velocityHash = Animator.StringToHash("Velocity");
@@ -32,9 +43,15 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        
+
         // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
+
+        // Actualiza el temporizador de los pasos
+        if (stepTimer > 0)
+        {
+            stepTimer -= Time.deltaTime;
+        }
     }
 
     private void Jump()
@@ -46,12 +63,13 @@ public class PlayerController : MonoBehaviour
             playerRB.AddForce(
                 new Vector2(0, jumpForce),
                 ForceMode2D.Impulse);
+            playerAS.PlayOneShot(jump);
         }
     }
 
     private void Move()
     {
-        float moveInput = Input.GetAxis("Horizontal");
+        moveInput = Input.GetAxis("Horizontal");
 
         if (moveInput > 0 && !lookAtRight)
         {
@@ -68,6 +86,17 @@ public class PlayerController : MonoBehaviour
 
         // Aplicar la velocidad al Rigidbody2D del personaje
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
+
+        if (onFloor && moveInput != 0 && stepTimer <= 0)
+        {
+            playerAS.Play();
+            stepTimer = stepInterval; // Reinicia el temporizador de los pasos
+        }
+
+        if (stepTimer <= 0)
+        {
+            playerAS.Pause();
+        }
     }
 
     // Change the direction the player is facing
@@ -79,7 +108,23 @@ public class PlayerController : MonoBehaviour
         transform.localScale = escala;
     }
 
-    private void Attack()
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        /*
+            Variable para pruebas solamente, cuando usen el método tienen
+            que tener un parametro que será una caracteristica del controlador de
+             balas del enemigo con el daño que hace la bala
+        */
+        float enemyBulletDamage = 1.0f;
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            //TakeDamage(other.gameObject.GetComponent<EnemyBulletController>().bulletDamage);
+            TakeDamage(enemyBulletDamage);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }

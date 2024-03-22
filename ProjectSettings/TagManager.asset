@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - groundCheck
+  - Gun
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
