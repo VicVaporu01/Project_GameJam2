@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool onFloor = false;
     private bool lookAtRight = true;
     private int velocityHash, YVelocityHash,onFloorHash;
+    public bool isBoosting = false;
+    private float initialSpeed;
 
     private void Start()
     {
@@ -26,12 +28,33 @@ public class PlayerController : MonoBehaviour
         velocityHash = Animator.StringToHash("Velocity");
         onFloorHash = Animator.StringToHash("onFloor");
         YVelocityHash = Animator.StringToHash("YVelocity");
+        initialSpeed = moveSpeed;
     }
 
     private void Update()
     {
         Move();
         Jump();
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isBoosting = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isBoosting = false;
+        }
+
+        if (isBoosting)
+        {
+            // Aumentar la velocidad mientras se mantiene presionada la tecla Espacio
+            moveSpeed = 8;
+        }
+        else
+        {
+            // Restaurar la velocidad inicial si la tecla Espacio no está presionada
+            moveSpeed = initialSpeed;
+        }
         
         // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
