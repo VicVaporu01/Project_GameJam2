@@ -9,8 +9,7 @@ using Unity.Mathematics;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField]PlayerController player;
+    [SerializeField] PlayerController player;
     TextMeshProUGUI Balas;
     [SerializeField] Slider vida;
     public UnityEvent reanudar;
@@ -18,7 +17,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent finalDelJuego;
     int maxVida;
     int currentHealth;
-    public static GameManager Instance {get; private set;}
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -31,7 +30,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
-        if(player != null)maxVida = System.Convert.ToInt32(player.health);
+
+        if (player != null)
+        {
+            maxVida = System.Convert.ToInt32(player.health);
+        }
     }
 
     // Start is called before the first frame update
@@ -47,33 +50,39 @@ public class GameManager : MonoBehaviour
         {
             currentHealth = System.Convert.ToInt32(player.health);
             vida.value = currentHealth;
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
+                Debug.Log("Murió!");
                 finDelJuego();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             pausa();
         }
-        
     }
+
     public void cambioDeEscena(string Escena)
     {
         SceneManager.LoadScene(Escena);
     }
+
     public void pausa()
     {
         Time.timeScale = 0f;
         pause.Invoke();
     }
+
     public void regresar()
     {
         Time.timeScale = 1;
         reanudar.Invoke();
     }
+
     public void finDelJuego()
     {
+        finalDelJuego.Invoke();
         Time.timeScale = 0f;
     }
 }
