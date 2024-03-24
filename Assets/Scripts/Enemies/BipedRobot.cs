@@ -10,6 +10,7 @@ public class BipedRobot : MonoBehaviour
     private Rigidbody2D enemyRb;
     private GameObject player;
     private bool movingRight = true;
+    private bool idle = true;
 
     void Start()
     {
@@ -20,6 +21,16 @@ public class BipedRobot : MonoBehaviour
 
     void Update()
     {
+        if (idle)
+        {
+            Idle();
+        }
+
+    }
+
+    void Idle()
+    {
+        Debug.Log("Active");
         // Determina la dirección de patrulla del enemigo
         Vector3 patrolDirection = movingRight ? Vector3.right : Vector3.left;
 
@@ -34,10 +45,27 @@ public class BipedRobot : MonoBehaviour
 
         // Aplica el movimiento al enemigo
         enemyRb.velocity = patrolDirection * speed;
-
     }
 
+    void Attack()
+    {
+        // Realizar acciones de ataque aquí
+        Debug.Log("Attacking!");
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            idle = false;
+            Attack();
+        }
+        idle = true;
+    }
 
-    
+    private void Turn()
+    {
+        movingRight = !movingRight;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+    }
+          
 }
-
