@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,13 +12,16 @@ public class PlayerController : MonoBehaviour
     private Transform refPie;
     private AudioSource playerAS;
 
-    [Header("PLAYER STATS")] public float health = 5.0f;
+    [Header("PLAYER STATS")] 
+    public float health = 5.0f;
 
     private float moveInput;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
     [SerializeField] private float jumpForce = 150;
 
-    [Header("SOUNDS")] [SerializeField] private AudioClip jump;
+    [Header("SOUNDS")] 
+    [SerializeField] private AudioClip stepOnRock;
+    [SerializeField] private AudioClip jump;
     [SerializeField] private float stepInterval = 0.5f;
 
     private float stepTimer;
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
 
+        // Check the direction the player is facing
         if (moveInput > 0 && !lookAtRight)
         {
             Turn();
@@ -84,18 +89,15 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetFloat(velocityHash, Math.Abs(moveInput));
 
-        // Aplicar la velocidad al Rigidbody2D del personaje
+        // Apply the velocity to the rigidbody of the player
         playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
 
+        // Reproduce the steps sound if the player is moving and is on the floor
         if (onFloor && moveInput != 0 && stepTimer <= 0)
         {
-            playerAS.Play();
-            stepTimer = stepInterval; // Reinicia el temporizador de los pasos
-        }
-
-        if (stepTimer <= 0)
-        {
-            playerAS.Pause();
+            // Play the step sound and then reset the timer
+            playerAS.PlayOneShot(stepOnRock);
+            stepTimer = stepInterval; 
         }
     }
 
@@ -103,9 +105,7 @@ public class PlayerController : MonoBehaviour
     private void Turn()
     {
         lookAtRight = !lookAtRight;
-        Vector3 escala = transform.localScale;
-        escala.x *= -1;
-        transform.localScale = escala;
+        transform.Rotate(0, 180, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
