@@ -43,8 +43,19 @@ public class BipedRobot : MonoBehaviour
             movingRight = !movingRight;
         }
 
+        if (!movingRight)
+        {
+            transform.rotation = Quaternion.identity;
+            
+        }
+        else // Si cambia de dirección a la derecha, restaura la rotación
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
         // Aplica el movimiento al enemigo
         enemyRb.velocity = patrolDirection * speed;
+
     }
 
     void Attack()
