@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 1716223613}
     - target: {fileID: 5225522092733158722, guid: 7b6d190bb1ab649489b32b0d945fd9a3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: UI
+      value: StartingZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b6d190bb1ab649489b32b0d945fd9a3, type: 3}

@@ -43,20 +43,16 @@ public class Shoot : MonoBehaviour
 
         playerAnimator.SetBool(isWeaponRaisedHash, true);
 
+        BulletMovement(bullet);
+
+        StartCoroutine(LowerWeaponAfterDelay());
+    }
+
+    private void BulletMovement(GameObject bullet)
+    {
         // Accede al componente Rigidbody de la bala y le aplica una velocidad en la dirección hacia adelante del jugador
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
         bulletRB.velocity = transform.right * bulletSpeed;
-
-        if (this.transform.parent.transform.localScale.x < 0)
-        {
-            bulletRB.velocity *= -1;
-        }
-        else
-        {
-            bulletRB.velocity *= 1;
-        }
-
-        StartCoroutine(LowerWeaponAfterDelay());
     }
 
     private IEnumerator LowerWeaponAfterDelay()
