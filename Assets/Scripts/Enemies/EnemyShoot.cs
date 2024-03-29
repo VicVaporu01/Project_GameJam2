@@ -7,7 +7,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private GameObject enemyBulletPrefab;
 
     public bool canShoot = false;
-    private float shootTimer = 1.0f;
+    private float shootTimer = 0.0f;
     public float enemyBulletSpeed = 25.0f;
 
     private void Start()
@@ -16,12 +16,13 @@ public class EnemyShoot : MonoBehaviour
 
     private void Update()
     {
-        shootTimer -= Time.deltaTime;
-        if (canShoot && shootTimer <= 0.0f)
+        if (shootTimer > 0.0f)
         {
-            canShoot = false;
-            StartCoroutine(ShootController());
-            shootTimer = 1.0f;
+            shootTimer -= Time.deltaTime;
+        }
+        else if (canShoot && shootTimer <= 0.0f)
+        {
+            Shoot();
         }
     }
 
@@ -39,5 +40,11 @@ public class EnemyShoot : MonoBehaviour
 
         Rigidbody2D enemyBulletRB = enemyBullet.GetComponent<Rigidbody2D>();
         enemyBulletRB.velocity = transform.right * enemyBulletSpeed;
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
+        shootTimer = 1.0f;
     }
 }
