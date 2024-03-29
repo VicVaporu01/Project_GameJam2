@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
             vida.value = currentHealth;
             if (currentHealth <= 0)
             {
-                Debug.Log("Murió!");
                 finDelJuego();
             }
         }
