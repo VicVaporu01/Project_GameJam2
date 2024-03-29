@@ -14,25 +14,20 @@ public class DetectPlayer : MonoBehaviour
         _enemyController = GetComponentInParent<EnemyController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-    }
+        // To see the raycast in the scene view
+        // Ray2D ray = new Ray2D(transform.position, transform.right);
+        // Debug.DrawRay(ray.origin, ray.direction * 10.0f);
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
+        if (hit.collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player detected!");
             canAttack = true;
             _enemyController.AttackPlayer(canAttack);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        else
         {
-            Debug.Log("Player left!");
             canAttack = false;
             _enemyController.AttackPlayer(canAttack);
         }
