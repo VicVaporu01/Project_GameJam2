@@ -18,10 +18,11 @@ public class DetectPlayer : MonoBehaviour
     {
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player detected!");
             canAttack = true;
             _enemyController.AttackPlayer(canAttack);
         }
@@ -31,6 +32,7 @@ public class DetectPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player left!");
             canAttack = false;
             _enemyController.AttackPlayer(canAttack);
         }
