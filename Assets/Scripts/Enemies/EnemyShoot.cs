@@ -5,13 +5,16 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] private GameObject enemyBulletPrefab;
+    [SerializeField] private AudioSource enemyAudioSource;
 
+    [SerializeField] private AudioClip enemyShootClip;
     public bool canShoot = false;
-    private float shootTimer = 0.0f;
+    private float shootTimer = 1.5f;
     public float enemyBulletSpeed = 25.0f;
 
     private void Start()
     {
+        enemyAudioSource = GetComponentInParent<AudioSource>();
     }
 
     private void Update()
@@ -40,11 +43,12 @@ public class EnemyShoot : MonoBehaviour
 
         Rigidbody2D enemyBulletRB = enemyBullet.GetComponent<Rigidbody2D>();
         enemyBulletRB.velocity = transform.right * enemyBulletSpeed;
+        enemyAudioSource.PlayOneShot(enemyShootClip);
         ResetTimer();
     }
 
     private void ResetTimer()
     {
-        shootTimer = 1.0f;
+        shootTimer = 1.5f;
     }
 }
