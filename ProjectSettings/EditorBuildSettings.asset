@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartingZone.unity
     guid: 5a4f7964c088814498b1c1e71caa2270
+  - enabled: 1
+    path: Assets/Scenes/DinoWorld.unity
+    guid: 013fd9a90f35771499aacfad7d4bfa00
+  - enabled: 1
+    path: Assets/Scenes/RobotWorld.unity
+    guid: 57b0388f9c7281b4f86d62cd45a54e43
   m_configObjects: {}

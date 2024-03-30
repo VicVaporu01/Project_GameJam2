@@ -15,8 +15,15 @@ public class GameManager : MonoBehaviour
     public UnityEvent reanudar;
     public UnityEvent pause;
     public UnityEvent finalDelJuego;
+
     int maxVida;
     int currentHealth;
+
+    [SerializeField] private int enemiesAmount;
+    [SerializeField] private int killedEnemies;
+
+    private bool canChangeWorld = false;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -35,6 +42,8 @@ public class GameManager : MonoBehaviour
         {
             maxVida = System.Convert.ToInt32(player.health);
         }
+
+        enemiesAmount = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     // Start is called before the first frame update
@@ -84,4 +93,19 @@ public class GameManager : MonoBehaviour
         finalDelJuego.Invoke();
         Time.timeScale = 0f;
     }
+
+    public void AddKilledEnemy()
+    {
+        killedEnemies += 1;
+        if (killedEnemies == enemiesAmount)
+        {
+            canChangeWorld = true;
+        }
+    }
+    
+    public bool GetCanChangeWorld()
+    {
+        return canChangeWorld;
+    }
+    
 }
