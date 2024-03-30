@@ -10,12 +10,12 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D enemyRB;
 
     [SerializeField] private float health = 5.0f;
-    private float movementSpeed = 3.0f;
+    [SerializeField] private float movementSpeed = 2.0f;
 
     private bool playerDetected = false;
     private bool lookAtRight = true;
     private bool canTurn = true;
-    private float turnTimer = 2.0f;
+    private float turnTimer = 1.0f;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.AddKilledEnemy();
         }
 
         if (!playerDetected)
@@ -65,7 +66,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
-            health -= other.gameObject.GetComponent<BulletController>().GetDamage();
+            TakeDamage(other.gameObject.GetComponent<BulletController>().GetDamage());
         }
     }
 
