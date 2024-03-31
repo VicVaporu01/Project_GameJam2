@@ -291,6 +291,7 @@ MonoBehaviour:
   health: 5
   moveSpeed: 5
   jumpForce: 370
+  playerRBVelocity: 0
   stepOnRock: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
   jump: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
   stepInterval: 0.5

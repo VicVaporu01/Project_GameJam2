@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Enemy
+  - Crate
   layers:
   - Default
   - TransparentFX

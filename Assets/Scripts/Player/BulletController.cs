@@ -26,8 +26,12 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        bulletAnimator.SetTrigger(hitHash);
-        bulletRB.velocity = Vector2.zero;
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Crate") ||
+            other.gameObject.CompareTag("Player"))
+        {
+            bulletAnimator.SetTrigger(hitHash);
+            bulletRB.velocity = Vector2.zero;
+        }
     }
 
     public void Desactivate()
@@ -40,5 +44,10 @@ public class BulletController : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
 
         Desactivate();
+    }
+
+    public float GetDamage()
+    {
+        return damage;
     }
 }
