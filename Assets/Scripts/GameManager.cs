@@ -9,16 +9,22 @@ using Unity.Mathematics;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField]PlayerController player;
+    [SerializeField] PlayerController player;
     TextMeshProUGUI Balas;
     [SerializeField] Slider vida;
     public UnityEvent reanudar;
     public UnityEvent pause;
     public UnityEvent finalDelJuego;
+
     int maxVida;
     int currentHealth;
-    public static GameManager Instance {get; private set;}
+
+    [SerializeField] private int enemiesAmount;
+    [SerializeField] private int killedEnemies;
+
+    private bool canChangeWorld = false;
+
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -31,7 +37,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
-        if(player != null)maxVida = System.Convert.ToInt32(player.health);
+
+        if (player != null)
+        {
+            maxVida = System.Convert.ToInt32(player.health);
+        }
+
+        enemiesAmount = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     // Start is called before the first frame update
@@ -47,33 +59,53 @@ public class GameManager : MonoBehaviour
         {
             currentHealth = System.Convert.ToInt32(player.health);
             vida.value = currentHealth;
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
                 finDelJuego();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             pausa();
         }
-        
     }
+
     public void cambioDeEscena(string Escena)
     {
         SceneManager.LoadScene(Escena);
     }
+
     public void pausa()
     {
         Time.timeScale = 0f;
         pause.Invoke();
     }
+
     public void regresar()
     {
         Time.timeScale = 1;
         reanudar.Invoke();
     }
+
     public void finDelJuego()
     {
+        finalDelJuego.Invoke();
         Time.timeScale = 0f;
     }
+
+    public void AddKilledEnemy()
+    {
+        killedEnemies += 1;
+        if (killedEnemies == enemiesAmount)
+        {
+            canChangeWorld = true;
+        }
+    }
+    
+    public bool GetCanChangeWorld()
+    {
+        return canChangeWorld;
+    }
+    
 }

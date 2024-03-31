@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,437 +125,659 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dinosaur1Walking1
+      name: dinosaurs-ldle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
+        y: 254
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e22e6c483de4343bfd32ec18c3c3b3
+      internalID: 948750723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Walk_1
+      rect:
+        serializedVersion: 2
+        x: 79
         y: 256
-        width: 64
-        height: 64
+        width: 46
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9550679273704a64eb4ceba4ede16520
-      internalID: 1618200442
+      spriteID: 5f839ef924e419348ae5578aa51b9be7
+      internalID: 742834409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Walking2
+      name: dinosaurs-Walk_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 143
         y: 256
-        width: 64
-        height: 64
+        width: 47
+        height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05ea5a029b667bd4e8237fafa7834333
-      internalID: -484011995
+      spriteID: e2d4f6c68521e104ab53316191ecf6d0
+      internalID: -970552699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Walking3
+      name: dinosaurs-Walk_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 207
         y: 256
-        width: 64
-        height: 64
+        width: 46
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fd0d0758191b1548bfabfe53aa00c5c
-      internalID: 1403994963
+      spriteID: 9f0df80ada073dc40a0d0842bb3300a4
+      internalID: 56092691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Walking4
+      name: dinosaurs-Walk_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 270
         y: 256
-        width: 64
-        height: 64
+        width: 45
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df4de2d0595ae88489696645aabab3c7
-      internalID: 1514250590
+      spriteID: 3da3e61211a47d246b32320fbf0c9c57
+      internalID: 770855555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Iddle1
+      name: dinosaurs-Attack_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 64
-        height: 64
+        x: 83
+        y: 191
+        width: 42
+        height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1559a875e0235454fa3fa92f41f18a66
-      internalID: 1099721580
+      spriteID: b9d568485fcdb4b4b8ba2ae68513a9fb
+      internalID: 564185037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Iddle2
+      name: dinosaurs-Attack_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 130
         y: 192
-        width: 64
-        height: 64
+        width: 60
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 796e8bb93a741aa428d3860abebf8710
-      internalID: 2025498505
+      spriteID: 51e522975e8cd124ba4ba285eb7501b8
+      internalID: -263076803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Attack1
+      name: dinosaurs-Sheet_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 155
+        y: 237
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50313e8bfdf6ef44a5f140e28dbfd78
+      internalID: -521416988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-ldle_1
+      rect:
+        serializedVersion: 2
+        x: 17
         y: 192
-        width: 64
-        height: 64
+        width: 45
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9bd800af96267b43bddcdf00e39b87a
-      internalID: 919538846
+      spriteID: 8d4745db01b314548bffb352b233ffe0
+      internalID: 324421531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Attack2
+      name: dinosaurs-Attack_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 195
         y: 192
-        width: 64
-        height: 64
+        width: 59
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7921614bdb81d594bb930501260e3c43
-      internalID: -393612797
+      spriteID: add85ad5a41110647b69bf39bf62aeb7
+      internalID: -1282331656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Attack3
+      name: dinosaurs-Attack_4
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
+        x: 268
+        y: 182
+        width: 50
+        height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052fc93eda34a60488c0c572cbdee6b7
-      internalID: -1674334367
+      spriteID: 0f31fd97df749e94c906bc8d82077ec2
+      internalID: 1144162905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur1Attack4
+      name: dinosaurs-Smoke_3
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3750868ecdf4e54f820abae3f413b19
-      internalID: 1587495458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death1
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 142
         y: 128
-        width: 64
-        height: 64
+        width: 40
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aed42fe1ce58774695b8bc235db5199
-      internalID: 1207077357
+      spriteID: 100888a7d2a23db4c9664186f1ca8c02
+      internalID: 800611475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death2
+      name: dinosaurs-Sheet_12
       rect:
         serializedVersion: 2
-        x: 64
+        x: 209
+        y: 153
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56afaeaedd4307d42952a5260e395047
+      internalID: -1939976026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 159
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40719b2a9767e3349ad351390896bd76
+      internalID: -232561344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 167
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2852b6b2e68cb8b409045aed06b816c4
+      internalID: 1178932484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Smoke_1
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 124
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f113847872c6ba647a90f05587f8e180
+      internalID: -973830177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Smoke_2
+      rect:
+        serializedVersion: 2
+        x: 76
         y: 128
-        width: 64
-        height: 64
+        width: 42
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99f7c1543722c4d4cbd6368fa1ec9cb7
-      internalID: -942830336
+      spriteID: 62d3fd1f1da452846a21003c23a48b04
+      internalID: -1284763997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death3
+      name: dinosaurs-Sheet_17
       rect:
         serializedVersion: 2
-        x: 128
+        x: 213
+        y: 143
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60da38aeb17a8134894b1f6b60536b09
+      internalID: -2104884173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 158
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70bf2366ca0db9548b8ba3d28ad022d9
+      internalID: -157786689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 151
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93ccf99c9f15c74bbfbd78ca38fd395
+      internalID: -1322331626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 131
+        width: 10
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479b9c54fe08085498332a16a4fce7db
+      internalID: 603180676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 131
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b647d9033ef9ac45b20ff8b0ceef7e5
+      internalID: 1529832237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 232
         y: 128
-        width: 64
-        height: 64
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d441f280a8bf5f349bf2dfc8019c2b7d
-      internalID: -1667768138
+      spriteID: f21a8852a1d6ae7478ff6bb964aaf786
+      internalID: 579589756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death4
+      name: dinosaurs-Sheet_23
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
+        x: 17
+        y: 103
+        width: 5
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b994480179e1e90449d3eddad2e4ebad
-      internalID: -1098365535
+      spriteID: 6672f2b47abf44b48976d2b1c8b6fcfa
+      internalID: 365457157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death5
+      name: dinosaurs-Sheet_24
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
-        width: 64
-        height: 64
+        x: 43
+        y: 111
+        width: 4
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 375f6b5b39dd53c489d6d4a69ddbeb42
-      internalID: -92437851
+      spriteID: 2e731b8b91b510a43b5c37238e589d3f
+      internalID: 599571276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death6
+      name: dinosaurs-Sheet_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 27
+        y: 102
+        width: 5
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 498fdade4681ea84380bf3b6b9e7204f
-      internalID: 716128924
+      spriteID: aaae65e6ed5dc7b47a0bebea272eef2c
+      internalID: 1901025821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur2Fly1
+      name: dinosaurs-TeroFly_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 132
+        y: 69
+        width: 55
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd650b04cd667d84ca41a5a37e33d63e
-      internalID: -1527181874
+      spriteID: 754896f42944eb24c9f9550aa0312919
+      internalID: 1817570671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur2Fly2
+      name: dinosaurs-TeroFly_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 196
+        y: 69
+        width: 55
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2021f42109023554883bcfabd7606f7a
-      internalID: -1773898625
+      spriteID: c7a171a865197cf4ca1ab758b03a042a
+      internalID: -1198048019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur2Fly3
+      name: dinosaurs-TeroFly_3
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
+        x: 259
+        y: 70
+        width: 55
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd0829ef3e6d98a47ab4b8e30a08f208
-      internalID: 350739403
+      spriteID: a9ae8e8c465f73849b6e86baa1bd8ba1
+      internalID: -1325756095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dinosaur2Fly4
+      name: dinosaurs-TeroFly_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 4
+        y: 5
+        width: 55
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fcb0745833c6d647a74273a33c370ca
-      internalID: -1483111108
+      spriteID: f3f282b831fedcc44bd217a81540252f
+      internalID: -1338416171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death7
+      name: dinosaurs-Smoke_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 14
+        y: 87
+        width: 39
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,8 +785,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c5a2a6faa30744886a482e537ff6af
-      internalID: 2140239508
+      spriteID: e90bc7f25a6b0ea438a837fc59c6cb65
+      internalID: -1693343007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Smoke_5
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 136
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51bd5c83e67d8348ae68c42ff77ba41
+      internalID: 1961649293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dinosaurs-Smoke_4
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 125
+        width: 56
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db43b81e758465945a6b6c8d07f71955
+      internalID: -1012995897
       vertices: []
       indices: 
       edges: []
@@ -580,27 +844,39 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dinosaur1Attack1: -393612797
-      Dinosaur1Attack2: -1674334367
-      Dinosaur1Attack3: 1587495458
-      Dinosaur1Attack4: 1207077357
-      Dinosaur1Iddle1: 2025498505
-      Dinosaur1Iddle2: 919538846
-      Dinosaur1Walking1: -484011995
-      Dinosaur1Walking2: 1403994963
-      Dinosaur1Walking3: 1514250590
-      Dinosaur1Walking4: 1099721580
-      Dinosaur2Fly1: -1527181874
-      Dinosaur2Fly2: -1773898625
-      Dinosaur2Fly3: 350739403
-      Dinosaur2Fly4: -1483111108
-      death1: -942830336
-      death2: -1667768138
-      death3: -1098365535
-      death4: -92437851
-      death5: 1618200442
-      death6: 716128924
-      death7: 2140239508
+      dinosaurs-Attack_1: 564185037
+      dinosaurs-Attack_2: -263076803
+      dinosaurs-Attack_3: -1282331656
+      dinosaurs-Attack_4: 1144162905
+      dinosaurs-Sheet_12: -1939976026
+      dinosaurs-Sheet_13: -232561344
+      dinosaurs-Sheet_14: 1178932484
+      dinosaurs-Sheet_17: -2104884173
+      dinosaurs-Sheet_18: -157786689
+      dinosaurs-Sheet_19: -1322331626
+      dinosaurs-Sheet_20: 603180676
+      dinosaurs-Sheet_21: 1529832237
+      dinosaurs-Sheet_22: 579589756
+      dinosaurs-Sheet_23: 365457157
+      dinosaurs-Sheet_24: 599571276
+      dinosaurs-Sheet_25: 1901025821
+      dinosaurs-Sheet_7: -521416988
+      dinosaurs-Smoke_1: -973830177
+      dinosaurs-Smoke_2: -1284763997
+      dinosaurs-Smoke_3: 800611475
+      dinosaurs-Smoke_4: -1012995897
+      dinosaurs-Smoke_5: 1961649293
+      dinosaurs-Smoke_6: -1693343007
+      dinosaurs-TeroFly_1: 1817570671
+      dinosaurs-TeroFly_2: -1198048019
+      dinosaurs-TeroFly_3: -1325756095
+      dinosaurs-TeroFly_4: -1338416171
+      dinosaurs-Walk_1: 742834409
+      dinosaurs-Walk_2: -970552699
+      dinosaurs-Walk_3: 56092691
+      dinosaurs-Walk_4: 770855555
+      dinosaurs-ldle_0: 948750723
+      dinosaurs-ldle_1: 324421531
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

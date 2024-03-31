@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,21 +12,22 @@ public class PlayerController : MonoBehaviour
     private Transform refPie;
     private AudioSource playerAS;
 
-    [Header("PLAYER STATS")] 
-    public float health = 5.0f;
+    [Header("PLAYER STATS")] public float health = 5.0f;
 
     private float moveInput;
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento del personaje
     [SerializeField] private float jumpForce = 150;
+    [SerializeField] private float playerRBVelocity;
 
-    [Header("SOUNDS")] 
-    [SerializeField] private AudioClip stepInRockClip;
+    [Header("SOUNDS")] [SerializeField] private AudioClip stepOnRock;
     [SerializeField] private AudioClip jump;
+    [SerializeField] private float stepInterval = 0.5f;
 
+    private float stepTimer;
 
     private bool onFloor = false;
     private bool lookAtRight = true;
-    private int velocityHash, YVelocityHash, onFloorHash;
+    private int velocityHash, YVelocityHash, onFloorHash, healthHash;
 
     private void Start()
     {
@@ -38,15 +40,23 @@ public class PlayerController : MonoBehaviour
         velocityHash = Animator.StringToHash("Velocity");
         onFloorHash = Animator.StringToHash("onFloor");
         YVelocityHash = Animator.StringToHash("YVelocity");
+        healthHash = Animator.StringToHash("health");
     }
 
     private void Update()
     {
+        playerAnimator.SetFloat(healthHash, health);
         Move();
         Jump();
 
         // Tells to the animator the Y velocity of the player
         playerAnimator.SetFloat(YVelocityHash, playerRB.velocity.y);
+
+        // Actualiza el temporizador de los pasos
+        if (stepTimer > 0)
+        {
+            stepTimer -= Time.deltaTime;
+        }
     }
 
     private void Jump()
@@ -66,41 +76,56 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
 
-        if (moveInput > 0 && !lookAtRight)
+        // To optimize the movement of the player and only apply velocity when the player is moving
+        if (moveInput != 0)
         {
-            Turn();
+            // Check the direction the player is facing
+            if (moveInput > 0 && !lookAtRight)
+            {
+                Turn();
+            }
+            else if (moveInput < 0 && lookAtRight)
+            {
+                Turn();
+            }
+
+            float moveVelocity = moveInput * moveSpeed;
+
+            playerAnimator.SetFloat(velocityHash, Math.Abs(moveInput));
+
+            // Apply the velocity to the rigidbody of the player
+            // We don't used Time.deltaTime because the physics engine handles it for us.
+            playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
+
+            // Reproduce the steps sound if the player is moving and is on the floor
+            if (onFloor && moveInput != 0 && stepTimer <= 0)
+            {
+                // Play the step sound and then reset the timer
+                playerAS.PlayOneShot(stepOnRock);
+                stepTimer = stepInterval;
+            }
         }
-        else if (moveInput < 0 && lookAtRight)
-        {
-            Turn();
-        }
 
-        float moveVelocity = moveInput * moveSpeed;
-
-        playerAnimator.SetFloat(velocityHash, Math.Abs(moveInput));
-
-        // Aplicar la velocidad al Rigidbody2D del personaje
-        playerRB.velocity = new Vector2(moveVelocity, playerRB.velocity.y);
-    }
-
-    private void LateUpdate()
-    {
-        if (Input.GetButton("Horizontal"))
-        {
-            playerAS.PlayOneShot(stepInRockClip);
-        }
+        playerRBVelocity = playerRB.velocity.x;
     }
 
     // Change the direction the player is facing
     private void Turn()
     {
         lookAtRight = !lookAtRight;
-        Vector3 escala = transform.localScale;
-        escala.x *= -1;
-        transform.localScale = escala;
+        transform.Rotate(0, 180, 0);
     }
 
-    private void Attack()
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            TakeDamage(other.gameObject.GetComponent<BulletController>().GetDamage());
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }

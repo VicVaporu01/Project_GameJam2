@@ -6,6 +6,9 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     private Animator playerAnimator;
+    private AudioSource gunAS;
+
+    [SerializeField] private AudioClip laserSound;
 
     private int isWeaponRaisedHash;
     public float bulletSpeed = 25.0f;
@@ -14,6 +17,7 @@ public class Shoot : MonoBehaviour
     private void Start()
     {
         playerAnimator = GetComponentInParent<Animator>();
+        gunAS = GetComponent<AudioSource>();
         isWeaponRaisedHash = Animator.StringToHash("isWeaponRaised");
     }
 
@@ -35,22 +39,20 @@ public class Shoot : MonoBehaviour
         bullet.transform.position = bulletStartPosition;
         bullet.transform.rotation = transform.rotation;
 
+        gunAS.PlayOneShot(laserSound);
+
         playerAnimator.SetBool(isWeaponRaisedHash, true);
 
+        BulletMovement(bullet);
+
+        StartCoroutine(LowerWeaponAfterDelay());
+    }
+
+    private void BulletMovement(GameObject bullet)
+    {
         // Accede al componente Rigidbody de la bala y le aplica una velocidad en la dirección hacia adelante del jugador
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
         bulletRB.velocity = transform.right * bulletSpeed;
-
-        if (this.transform.parent.transform.localScale.x < 0)
-        {
-            bulletRB.velocity *= -1;
-        }
-        else
-        {
-            bulletRB.velocity *= 1;
-        }
-
-        StartCoroutine(LowerWeaponAfterDelay());
     }
 
     private IEnumerator LowerWeaponAfterDelay()
