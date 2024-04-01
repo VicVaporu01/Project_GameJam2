@@ -24,7 +24,7 @@ public class ActivateGravity : MonoBehaviour
         if (transform.parent.position.x <= playerTransform.position.x)
         {
             // Activa la gravedad del Rigidbody2D
-            rb2d.gravityScale = 1;
+            rb2d.gravityScale = 10;
         }
         else
         {
