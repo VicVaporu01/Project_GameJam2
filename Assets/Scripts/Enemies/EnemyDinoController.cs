@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyDinoController : MonoBehaviour
 {
+    [SerializeField] private float health = 5.0f;
     public float radius = 5.0f;
     public float speed;
     private bool alert;
     public LayerMask playerLayer;
-    public Transform player;  
+    public Transform player;
     private Vector2 targetPosition;
 
     private void Start()
@@ -18,11 +19,26 @@ public class EnemyDinoController : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            // GameManager.Instance.AddKilledEnemy();
+        }
+
         if (alert)
         {
             MoveTowardsPlayer();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(other.gameObject.GetComponent<BulletController>().GetDamage());
+        }
+    }
+
     // Interfaz que actualiza la deteccion del jugador
     private IEnumerator UpdatePlayerDetection()
     {
@@ -33,7 +49,7 @@ public class EnemyDinoController : MonoBehaviour
             yield return wait;
         }
     }
-    
+
     // El enemigo sigue al jugador
     private void MoveTowardsPlayer()
     {
@@ -41,14 +57,19 @@ public class EnemyDinoController : MonoBehaviour
         {
             targetPosition = player.position;
             Vector2 moveDirection = (targetPosition - (Vector2)transform.position).normalized;
-            transform.Translate(moveDirection * speed * Time.deltaTime);            
+            transform.Translate(moveDirection * speed * Time.deltaTime);
         }
     }
+
     // Crea un gizmo visual para ver el radio de ataque
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
-    
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
 }
