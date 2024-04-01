@@ -7,12 +7,19 @@ public class EnemyDinoController : MonoBehaviour
     public float radius = 5.0f;
     public float speed;
     private bool alert;
+    private bool isWalking = false;
     public LayerMask playerLayer;
     public Transform player;  
     private Vector2 targetPosition;
+    private Animator DinoAnim;
+       
+    [SerializeField] private float health = 5.0f;
+
+
 
     private void Start()
     {
+        DinoAnim = GetComponent<Animator>();
         StartCoroutine(UpdatePlayerDetection());
     }
 
@@ -21,6 +28,20 @@ public class EnemyDinoController : MonoBehaviour
         if (alert)
         {
             MoveTowardsPlayer();
+        }
+        
+        else
+        {
+            // Si no está alerta, desactiva la animación de caminar
+            isWalking = false;
+            DinoAnim.SetBool("walk", false);
+        }
+
+        if (health <= 0)
+        {
+            DinoAnim.SetBool("burstDino", true); 
+            Destroy(gameObject, DinoAnim.GetCurrentAnimatorClipInfo(0)[0].clip.length);       
+                               
         }
     }
     // Interfaz que actualiza la deteccion del jugador
@@ -41,9 +62,24 @@ public class EnemyDinoController : MonoBehaviour
         {
             targetPosition = player.position;
             Vector2 moveDirection = (targetPosition - (Vector2)transform.position).normalized;
-            transform.Translate(moveDirection * speed * Time.deltaTime);            
+            transform.Translate(moveDirection * speed * Time.deltaTime); 
+            DinoAnim.SetBool("walk", true);           
         }
     }
+
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(other.gameObject.GetComponent<BulletController>().GetDamage());
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;                  
+    }
+
     // Crea un gizmo visual para ver el radio de ataque
     private void OnDrawGizmos()
     {
