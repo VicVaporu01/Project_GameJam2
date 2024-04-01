@@ -250,32 +250,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &262889055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1455648244946462058, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
-  m_PrefabInstance: {fileID: 1030586138}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &262889062 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1455648244946462060, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
-  m_PrefabInstance: {fileID: 1030586138}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &262889063
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262889055}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 2}
-  m_Direction: 0
 --- !u!1 &370792693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2939,7 @@ PrefabInstance:
     - target: {fileID: 818103345520750238, guid: 9b11ce58c53af3548a114e2adffc0558, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 262889062}
+      objectReference: {fileID: 0}
     - target: {fileID: 818103345520750239, guid: 9b11ce58c53af3548a114e2adffc0558, type: 3}
       propertyPath: m_Name
       value: EnemyDino
@@ -3056,32 +3030,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1030586138
+--- !u!1001 &1107712563
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 560952876, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1455648244946462058, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1455648244946462060, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1455648244946462060, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.8070602
+      value: -7.972496
       objectReference: {fileID: 0}
     - target: {fileID: 1455648244946462060, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2313418
+      value: -2.6729536
       objectReference: {fileID: 0}
     - target: {fileID: 1455648244946462060, guid: 34d78f2b52f6b014dbbb484101e8197a, type: 3}
       propertyPath: m_LocalPosition.z
