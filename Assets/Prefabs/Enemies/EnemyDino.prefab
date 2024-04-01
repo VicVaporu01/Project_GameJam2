@@ -154,6 +154,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 0}
+  health: 5
 --- !u!50 &818103345520750228
 Rigidbody2D:
   serializedVersion: 4
